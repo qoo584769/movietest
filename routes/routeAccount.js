@@ -7,7 +7,7 @@ const controllerAccount = require('@/controllers/controllerAccount')
 
 const router = express.Router()
 
-router.post('/google', serviceError.asyncError(async (req, res, next) => {
+router.get('/google', serviceError.asyncError(async (req, res, next) => {
   const result = await controllerAccount.google(req, res, next)
   serviceResponse.success(res, result)
 }))
