@@ -7,7 +7,7 @@ const controllerAccount = require('@/controllers/controllerAccount')
 
 const router = express.Router()
 
-router.get('/auth/callback', serviceError.asyncError(async (req, res, next) => {
+router.get('/', serviceError.asyncError(async (req, res, next) => {
   const result = await controllerAccount.google(req, res, next)
   serviceResponse.success(res, result)
 }))

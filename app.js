@@ -52,7 +52,7 @@ app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile)) // 設定 swa
 app.use('/movieInfo', routeMovieInfo)
 app.use('/mail', routeMail)
 app.use('/signin', routeAccount)
-app.use('/', routeGoogle)
+app.use('/auth/callback', routeGoogle)
 app.use('/user', routeUser)
 
 // Set up error handling
