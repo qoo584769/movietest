@@ -20,6 +20,7 @@ const routeExample = require('./routes/routeExample') // 引入自訂的 routeEx
 const routeMovieInfo = require('./routes/routeMovieInfo')
 const routeMail = require('./routes/routeMail')
 const routeAccount = require('./routes/routeAccount')
+const routeGoogle = require('./routes/routeGoogle')
 const routeUser = require('./routes/routeUser')
 
 // Set up middleware
@@ -51,6 +52,7 @@ app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile)) // 設定 swa
 app.use('/movieInfo', routeMovieInfo)
 app.use('/mail', routeMail)
 app.use('/signin', routeAccount)
+app.use('/', routeGoogle)
 app.use('/user', routeUser)
 
 // Set up error handling
