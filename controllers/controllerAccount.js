@@ -19,14 +19,16 @@ const controllerAccount = {
   },
   async google (req, res, next) {
     // 引入官方的套件
-    console.log(req.body)
+    const code = req.query.code
+    console.log('code', code)
     console.log('轉址第二階段')
     const CLIENT_ID = process.env.GOOGLE_CLIENT_ID
-    const client = new OAuth2Client(CLIENT_ID)
-    const token = req.body.id_token
+    const client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, redirectUri)
+    const { tokens } = await client.getToken(code)
+    // const token = req.body.id_token
     // 將token和client_Id放入參數一起去做驗證
     const ticket = await client.verifyIdToken({
-      idToken: token,
+      idToken: tokens.id_token,
       audience: CLIENT_ID
     })
 
