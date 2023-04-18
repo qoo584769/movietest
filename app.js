@@ -18,6 +18,9 @@ const middlewareError = require('@/middlewares/middlewareError')
 // Load routes 請使用 ./ 引入不然 swagger 會找不到
 const routeExample = require('./routes/routeExample') // 引入自訂的 routeExample
 const routeMovieInfo = require('./routes/routeMovieInfo')
+const routeMail = require('./routes/routeMail')
+const routeAccount = require('./routes/routeAccount')
+const routeUser = require('./routes/routeUser')
 
 // Set up middleware
 app.use(logger('dev')) // 設定 morgan 的 logger，可以在 server 端看到請求的細節
@@ -29,7 +32,9 @@ app.use(cors({
   origin: ['*'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization']
-})) // 設定 cors
+}))
+
+// 設定 cors
 app.use((req, res, next) => {
   res.set(
     'Access-Control-Allow-Headers',
@@ -44,6 +49,9 @@ app.use((req, res, next) => {
 app.use('/example', routeExample)
 app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile)) // 設定 swagger 的路由
 app.use('/movieInfo', routeMovieInfo)
+app.use('/mail', routeMail)
+app.use('/signin', routeAccount)
+app.use('/user', routeUser)
 
 // Set up error handling
 app.use(middlewareError) // 設定錯誤處理
