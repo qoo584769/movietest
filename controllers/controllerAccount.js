@@ -3,7 +3,7 @@ const { OAuth2Client } = require('google-auth-library')
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
-const redirectUri = 'http://localhost:3000/auth/callback'
+const redirectUri = 'https://movietest-production.up.railway.app/auth/callback'
 
 const controllerAccount = {
   async auth (req, res, next) {
