@@ -12,7 +12,7 @@ router.post('/google', serviceError.asyncError(async (req, res, next) => {
   serviceResponse.success(res, result)
 }))
 
-router.get('/googleAuth', serviceError.asyncError(async (req, res, next) => {
+router.get('/auth/callback', serviceError.asyncError(async (req, res, next) => {
   const result = await controllerAccount.google(req, res, next)
   serviceResponse.success(res, result)
 }))
