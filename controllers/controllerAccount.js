@@ -14,6 +14,7 @@ const controllerAccount = {
       scope: ['openid', 'email', 'profile'] // 取得使用者的個人資訊
     })
     console.log('轉址第一階段')
+    console.log(authorizeUrl)
     res.redirect(authorizeUrl)
   },
   async google (req, res, next) {
