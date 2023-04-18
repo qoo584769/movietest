@@ -3,6 +3,7 @@ require('dotenv').config()
 const controllerAccount = {
   async google (req, res, next) {
     // 引入官方的套件
+    console.log(req.body)
     const { OAuth2Client } = require('google-auth-library')
     const CLIENT_ID = process.env.GOOGLE_CLIENT_ID
     const client = new OAuth2Client(CLIENT_ID)
