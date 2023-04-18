@@ -15,6 +15,11 @@ const controllerUser = {
       phoneNumber,
       birthdayDay
     }
+    const checkUser = await modelUser.findOne({ account: data.account })
+    console.log(checkUser)
+    if (checkUser !== null) {
+      next(serviceResponse.error(400, '帳號已被使用'))
+    }
     const result = await modelUser.create(data)
     console.log(result)
     return result
@@ -26,13 +31,13 @@ const controllerUser = {
       account, password
     }
     if (!userData.account || !userData.password) {
-      serviceResponse.error(400, '帳號密碼必填')
+      next(serviceResponse.error(400, '帳號密碼必填'))
     }
     const dbRes = await modelUser.findOne({ account: userData.account }).select('+password')
     const compaire = await hash.compaire(userData.password, dbRes.password)
 
     if (!compaire) {
-      serviceResponse.error(400, '密碼錯誤')
+      next(serviceResponse.error(400, '密碼錯誤'))
     }
 
     const signinToken = await token.signinToken(dbRes.id)
@@ -51,17 +56,17 @@ const controllerUser = {
     console.log(user)
     const { password, confirmPassword } = req.body
     if (!password || !confirmPassword) {
-      serviceResponse.error(400, '密碼不能為空')
+      next(serviceResponse.error(400, '密碼不能為空'))
     }
     if (password !== confirmPassword) {
-      serviceResponse.error(400, '密碼不一致')
+      next(serviceResponse.error(400, '密碼不一致'))
     }
     const newPassword = await hash.password(password)
     console.log(newPassword)
     const editUser = await modelUser.findByIdAndUpdate(user, { password: newPassword }, { returnDocument: 'after', runValidators: true })
 
     if (!editUser) {
-      serviceResponse.error(400, '更新資料庫發生錯誤')
+      next(serviceResponse.error(400, '更新資料庫發生錯誤'))
     }
 
     return editUser
