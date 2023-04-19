@@ -1,6 +1,6 @@
 
 const hash = require('@/utilities/hash')
-const modelUser = require('@/models/modelUser')
+const modelUser = require('@/models/modelFEuser')
 const serviceResponse = require('@/services/serviceResponse')
 const token = require('@/utilities/jwt')
 
