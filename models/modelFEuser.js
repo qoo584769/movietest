@@ -9,6 +9,7 @@ const FEuserSchema = new Schema(
     lastName: { type: String, trim: true },
     password: { type: String, required: true },
     email: { type: String, required: true, trim: true, unique: true },
+    kID: { type: String },
     phoneNumber: { type: String },
     birthday: { type: Date },
     profilePic: { type: String, default: "/images/profilePic.jpeg" },
