@@ -16,5 +16,5 @@ const FEuserSchema = new Schema(
   { timestamps: true }
 )
 
-const FEuser = mongoose.model('FEuser', FEuserSchema)
+const FEuser = model('FEuser', FEuserSchema)
 module.exports = FEuser
