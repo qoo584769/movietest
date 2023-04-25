@@ -1,6 +1,4 @@
-const { Schema, model } = require("mongoose")
-
-const Schema = mongoose.Schema
+const { Schema, model } = require('mongoose')
 
 const FEuserSchema = new Schema(
   {
@@ -12,11 +10,11 @@ const FEuserSchema = new Schema(
     kID: { type: String },
     phoneNumber: { type: String },
     birthday: { type: Date },
-    profilePic: { type: String, default: "/images/profilePic.jpeg" },
-    order: { type: Schema.Types.ObjectId, ref: "Order" },
+    profilePic: { type: String, default: '/images/profilePic.jpeg' },
+    order: { type: Schema.Types.ObjectId, ref: 'Order' }
   },
   { timestamps: true }
 )
 
-let FEuser = mongoose.model("FEuser", FEuserSchema)
+const FEuser = mongoose.model('FEuser', FEuserSchema)
 module.exports = FEuser
