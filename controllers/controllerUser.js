@@ -7,15 +7,16 @@ const token = require('@/utilities/jwt')
 const controllerUser = {
   // 註冊
   async signup (req, res, next) {
-    const { account, password, phoneNumber, birthdayDay } = req.body
+    const { account, password, phoneNumber, birthdayDay, email } = req.body
     const newPassword = await hash.password(password)
     const data = {
-      account,
+      accountname: account,
       password: newPassword,
       phoneNumber,
-      birthdayDay
+      birthdayDay,
+      email
     }
-    const checkUser = await modelUser.findOne({ account: data.account })
+    const checkUser = await modelUser.findOne({ accountname: data.account })
     console.log(checkUser)
     if (checkUser !== null) {
       next(serviceResponse.error(400, '帳號已被使用'))
