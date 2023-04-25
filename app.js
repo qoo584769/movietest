@@ -39,7 +39,7 @@ app.use(cors({
 app.use((req, res, next) => {
   res.set(
     'Access-Control-Allow-Headers',
-    'Content-Type, Authorization, Content-Length, X-Requested-With'
+    'Content-Type, Authorization, Content-Length, X-Requested-With,application/x-www-form-urlencoded,text/plain'
   )
   res.set('Access-Control-Allow-Origin', '*')
   res.set('Access-Control-Allow-Methods', 'PATCH, POST, GET,OPTIONS,DELETE')
