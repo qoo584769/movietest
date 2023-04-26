@@ -52,6 +52,7 @@ const controllerUser = {
 
     return authData
   },
+  // 單純修改密碼
   async updateUser (req, res, next) {
     const { user } = req
     console.log(user)
